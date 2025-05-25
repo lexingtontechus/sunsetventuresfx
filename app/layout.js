@@ -1,7 +1,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/app/components/header";
 import "./globals.css";
-
+import Logo from "./components/logo";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,7 +23,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          logoPlacement: "inside",
+          logoImageUrl: <Logo size={12} padding={0} />,
+          showOptionalFields: "false",
+        },
+      }}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
